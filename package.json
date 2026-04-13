@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d app"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
