@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Tribunal Invisível | Unção do Leão</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        :root { --primary: #eab308; --bg: #0a0a0a; }
+        body { background-color: var(--bg); color: #f4f4f5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .text-glow-gold { text-shadow: 0 0 15px rgba(234, 179, 8, 0.5); }
+        .glow-gold { box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
+        
+        /* Simulação de Glassmorphism para os vídeos */
+        .glass-card { background: rgba(24, 24, 27, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+        
+        .progress-bar-inner { transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="{ 
+    revealedWeapons: [], 
+    weaponsCount: 5,
+    get completed() { return this.revealedWeapons.length === this.weaponsCount },
+    toggleWeapon(id) {
+        if (!this.revealedWeapons.includes(id)) {
+            this.revealedWeapons.push(id);
+        }
+    }
+}">
+
+    <div class="fixed top-0 left-0 w-full h-1 z-[100] bg-white/5">
+        <div class="h-full bg-yellow-500 progress-bar-inner shadow-[0_0_10px_#eab308]" 
+             :style="'width: ' + (revealedWeapons.length / weaponsCount * 100) + '%'"></div>
+    </div>
+
+    <section class="min-h-screen flex items-center justify-center relative px-4 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://media.base44.com/images/public/69dd4eee1d527ab41482d6a9/26453a4c8_generated_844de720.png" 
+                 class="w-full h-full object-cover opacity-20" alt="Tribunal">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-2xl mx-auto" data-aos="zoom-out">
+            <p class="text-xs tracking-[0.4em] uppercase text-yellow-500/60 mb-4">Experiência 02</p>
+            <h1 class="font-cinzel text-4xl md:text-6xl font-bold mb-6">
+                O Tribunal <br> <span class="text-yellow-500 text-glow-gold">Invisível</span>
+            </h1>
+            <p class="text-zinc-400 text-sm md:text-base mb-10 leading-relaxed">
+                Jesus diante dos fariseus. Confronto espiritual. Arena de autoridade. <br>
+                Conheça as 5 armas sagradas que Ele usou — e que agora são suas heranças.
+            </p>
+            <button @click="document.getElementById('videos').scrollIntoView({behavior: 'smooth'})" 
+                    class="font-cinzel text-xs tracking-widest uppercase text-yellow-500 border border-yellow-500/30 px-8 py-4 rounded-full hover:bg-yellow-500/10 transition-all glow-gold">
+                Entrar no Tribunal ↓
+            </button>
+        </div>
+    </section>
+
+    <section id="videos" class="py-24 px-4 max-w-2xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <p class="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-2">@guardiaodoreino</p>
+            <h2 class="font-cinzel text-2xl md:text-3xl font-bold">Os Vídeos Proféticos</h2>
+            <p class="text-zinc-600 text-[10px] mt-2">12.4K SEGUIDORES • 387K CURTIDAS</p>
+        </div>
+
+        <div class="space-y-4">
+            <template x-for="(video, i) in [
+                {n: '01', t: 'Eles Julgaram o Filho de Deus', h: 'Eles colocaram Jesus no banco dos réus.', d: '20s'},
+                {n: '02', t: 'A Sombra Não Quer Que Você Veja Isso', h: 'No dia que você entender… para de obedecer.', d: '25s'},
+                {n: '03', t: 'As 5 Armas Escondidas', h: 'Jesus operava com 5 armas. Ninguém te contou.', d: '30s'},
+                {n: '04', t: 'O Julgamento Final', h: 'Todo dia tentam te convencer que você não tem poder.', d: '25s'},
+                {n: '05', t: 'O Portal Foi Aberto', h: 'Se você chegou aqui… não foi por acaso.', d: '20s'}
+            ]">
+                <div class="glass-card flex items-center gap-4 p-4 rounded-xl group hover:border-yellow-500/30 transition-all cursor-pointer" data-aos="fade-up">
+                    <div class="w-14 h-14 rounded-lg bg-zinc-800 flex items-center justify-center flex-shrink-0 font-cinzel font-bold text-zinc-600 group-hover:text-yellow-500 transition-colors" x-text="video.n"></div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-sm font-bold text-zinc-200 truncate" x-text="video.t"></h3>
+                        <p class="text-xs text-zinc-500 truncate" x-text="video.h"></p>
+                    </div>
+                    <span class="text-[10px] text-zinc-600 font-mono" x-text="video.d"></span>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 bg-zinc-950/30 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="relative mb-12 rounded-3xl overflow-hidden h-64 shadow-2xl" data-aos="fade-up">
+                <img src="https://media.base44.com/images/public/69dd4eee1d527ab41482d6a9/4cb19698f_generated_6ec901e3.png" class="w-full h-full object-cover opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+                <div class="absolute bottom-8 left-8">
+                    <p class="text-xs tracking-widest text-yellow-500/60 uppercase mb-2">Poderes de Autoridade</p>
+                    <h2 class="font-cinzel text-3xl font-bold">5 Armas <span class="text-yellow-500">Sagradas</span></h2>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-zinc-500 mb-10 italic">Toque em cada arma para revelar seu mistério.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <template x-for="(weapon, index) in [
+                    {n: 'Espada do Ensino', i: '⚔️', d: 'Jesus ensinava com autoridade viva, não como os escribas.'},
+                    {n: 'Chama da Natureza', i: '🔥', d: 'Ele restaurava a criação: curava, libertava e governava os elementos.'},
+                    {n: 'Martelo do Confronto', i: '🔨', d: 'Ele confrontava sistemas religiosos sem medo e sem negociação.'},
+                    {n: 'Chave do Reino', i: '🔑', d: 'Operava no invisível, onde as vitórias reais são seladas antes do tempo.'},
+                    {n: 'Manto da Transmissão', i: '👑', d: 'A autoridade foi transferida: as obras que Ele fez, você fará também.'}
+                ]">
+                    <button @click="toggleWeapon(index)" 
+                            :class="revealedWeapons.includes(index) ? 'bg-yellow-500/10 border-yellow-500/40 glow-gold' : 'bg-zinc-900/50 border-white/5'"
+                            class="text-left p-6 rounded-2xl border transition-all duration-500 group">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl" x-text="weapon.i"></span>
+                            <span class="font-cinzel text-sm font-bold" :class="revealedWeapons.includes(index) ? 'text-yellow-500' : 'text-zinc-300'" x-text="weapon.n"></span>
+                        </div>
+                        <div x-show="revealedWeapons.includes(index)" x-collapse>
+                            <p class="text-xs text-zinc-400 leading-relaxed pt-2 border-t border-white/5" x-text="weapon.d"></p>
+                        </div>
+                        <p x-show="!revealedWeapons.includes(index)" class="text-[10px] text-zinc-600 uppercase tracking-widest">Revelar Poder...</p>
+                    </button>
+                </template>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500">
+                    Progresso: <span class="text-yellow-500" x-text="revealedWeapons.length"></span> / 5 Armas
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section x-show="completed" x-transition.duration.800ms class="py-32 px-4 text-center bg-black relative overflow-hidden" x-cloak>
+        <div class="relative z-10" data-aos="zoom-in">
+            <p class="text-xs tracking-[0.4em] uppercase text-yellow-500/60 mb-6">Portal Liberado</p>
+            <h2 class="font-cinzel text-3xl md:text-4xl font-bold mb-8 leading-tight">
+                Agora você conhece as armas. <br>
+                <span class="text-yellow-500 text-glow-gold">É hora de acessar o Arquivo Selado.</span>
+            </h2>
+            <p class="text-zinc-500 text-sm max-w-md mx-auto mb-10">
+                O próximo portal contém o registro oculto dos Evangelhos. Decodifique-o e receba seu manto de autoridade.
+            </p>
+            <a href="arquivo-selado.html" class="inline-block bg-yellow-600 hover:bg-yellow-500 text-black font-bold font-cinzel tracking-widest px-10 py-5 rounded-md transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)]">
+                🔓 Acessar Arquivo Selado
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-zinc-700 text-[10px] uppercase tracking-widest">Unção do Leão — Arena de Autoridade</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Portal | Unção do Leão</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        :root { --primary: #eab308; --bg: #050505; }
+        body { background-color: var(--bg); color: #f4f4f5; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .text-glow-gold { text-shadow: 0 0 20px rgba(234, 179, 8, 0.5); }
+        .glow-gold { box-shadow: 0 0 30px rgba(234, 179, 8, 0.15); }
+        
+        .bg-card-custom { background: rgba(15, 15, 15, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        
+        @keyframes pulse-gold {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(234, 179, 8, 0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(234, 179, 8, 0.4); }
+        }
+        .animate-pulse-gold { animation: pulse-gold 3s infinite ease-in-out; }
+
+        .particle { position: absolute; background: var(--primary); border-radius: 50%; pointer-events: none; opacity: 0.3; }
+    </style>
+</head>
+<body x-data="{ openFaq: null }">
+
+    <section class="min-h-screen flex items-center justify-center relative px-4 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://media.base44.com/images/public/69dd4eee1d527ab41482d6a9/8eeb8f1a7_generated_ea998f40.png" 
+                 class="w-full h-full object-cover opacity-20" alt="Portal">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-[#050505]"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto" data-aos="zoom-out" data-aos-duration="1500">
+            <p class="text-xs tracking-[0.6em] uppercase text-yellow-500/60 mb-8">O Portal da Unção do Leão</p>
+            <h1 class="font-cinzel text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
+                Você foi <span class="text-yellow-500 text-glow-gold">escolhido</span><br>
+                para governar no espírito
+            </h1>
+            <p class="text-zinc-400 max-w-xl mx-auto mb-10 text-sm md:text-lg leading-relaxed">
+                Não mais como espectador. Não mais como vítima do sistema. <br>
+                Assuma sua <strong class="text-white">autoridade restaurada</strong> — segundo o modelo real de Jesus.
+            </p>
+            
+            <div class="flex flex-col items-center gap-6">
+                <a href="https://pay.kiwify.com.br/ChpHpNj" 
+                   class="animate-pulse-gold bg-yellow-600 hover:bg-yellow-500 text-black font-bold font-cinzel tracking-widest px-10 py-5 rounded-md transition-all">
+                    🦁 RECEBER A UNÇÃO DO LEÃO AGORA
+                </a>
+                <p class="text-yellow-500/80 font-cinzel text-xs italic tracking-widest">
+                    "A sombra prospera onde a autoridade dorme. Acorde."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-cinzel text-3xl md:text-4xl font-bold mb-6">A batalha que você <span class="text-red-500">perdeu</span> sem saber</h2>
+                <p class="text-zinc-500 text-sm md:text-base">
+                    Enquanto você seguia regras mortas, a Sombra Religiosa avançava. <br> 
+                    Ela roubou sua voz, sua coragem e sua identidade de governo.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <template x-for="pain in [
+                    'Sente que nasceu para mais mas não sabe como acessar',
+                    'Cansado de religião vazia que não produz poder real',
+                    'Vê as trevas avançando e se sente paralisado',
+                    'O chamado pesa, mas as portas parecem trancadas'
+                ]">
+                    <div class="flex items-start gap-4 p-5 rounded-xl bg-red-950/10 border border-red-900/20" data-aos="fade-up">
+                        <span class="text-red-500 font-bold">✕</span>
+                        <p class="text-sm text-zinc-300" x-text="pain"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-4 relative overflow-hidden border-y border-white/5">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://media.base44.com/images/public/69dd4eee1d527ab41482d6a9/d2130199f_generated_36442603.png" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-3xl mx-auto text-center relative z-10" data-aos="fade-up">
+            <p class="text-xs tracking-widest uppercase text-yellow-500/50 mb-6">A Revelação</p>
+            <h2 class="font-cinzel text-3xl md:text-5xl font-bold mb-8 leading-tight">
+                Jesus operava em um <br>
+                <span class="text-yellow-500 text-glow-gold">"modo de autoridade"</span><br>
+                desconhecido
+            </h2>
+            <p class="text-zinc-400 text-base md:text-lg leading-relaxed">
+                A autoridade não morreu na cruz — ela foi transferida. <br>
+                O e-book <strong class="text-white">"Jesus, o Modelo de Autoridade"</strong> revela o sistema real que Ele usava para subjugar as trevas e manifestar o Reino.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-32 px-4 bg-[#080808]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <p class="text-xs tracking-[0.4em] uppercase text-yellow-500/60 mb-4">O Treinamento</p>
+                <h2 class="font-cinzel text-3xl md:text-4xl font-bold">Ritual de Aprendizado em <span class="text-yellow-500">5 Chaves</span></h2>
+            </div>
+
+            <div class="space-y-4">
+                <template x-for="pillar in [
+                    {i: '⚔️', n: 'Espada do Ensino', d: 'Domine a Palavra com autoridade viva que transforma realidades, não apenas repete conceitos.'},
+                    {i: '🔥', n: 'Chama da Natureza Restaurada', d: 'Restaure o que foi perdido. Aprenda o governo sobre a criação e a libertação plena.'},
+                    {i: '🔨', n: 'Martelo do Confronto Santo', d: 'Aprenda a confrontar sistemas religiosos e espirituais sem hesitação ou medo.'},
+                    {i: '🔑', n: 'Chave do Reino Invisível', d: 'Opere no mundo espiritual, onde as causas são resolvidas antes de aparecerem no físico.'},
+                    {i: '👑', n: 'Manto da Transmissão', d: 'Receba a ativação: as obras que Jesus fez, agora estão sob sua responsabilidade.'}
+                ]">
+                    <div class="bg-card-custom p-6 rounded-2xl flex items-center gap-6 hover:border-yellow-500/30 transition-all group" data-aos="fade-left">
+                        <span class="text-4xl group-hover:scale-125 transition-transform" x-text="pillar.i"></span>
+                        <div>
+                            <h3 class="font-cinzel font-bold text-yellow-500 mb-1" x-text="pillar.n"></h3>
+                            <p class="text-xs text-zinc-500 leading-relaxed" x-text="pillar.d"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-4">
+        <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+            <div class="bg-yellow-500/5 border border-yellow-500/20 p-8 md:p-16 rounded-[2rem] text-center relative overflow-hidden glow-gold">
+                <div class="relative z-10">
+                    <p class="text-xs tracking-[0.5em] uppercase text-yellow-500/60 mb-6">Comissionamento do Guerreiro</p>
+                    <h2 class="font-cinzel text-3xl md:text-5xl font-bold mb-6">E-book <br> <span class="text-yellow-500 text-glow-gold">"Jesus, o Modelo de Autoridade"</span></h2>
+                    <p class="text-zinc-400 text-sm md:text-base mb-12">Treinamento completo em governo espiritual e ativação ministerial.</p>
+                    
+                    <a href="https://pay.kiwify.com.br/ChpHpNj" 
+                       class="inline-block bg-yellow-600 hover:bg-yellow-500 text-black font-bold font-cinzel tracking-widest px-12 py-5 rounded-md transition-all shadow-2xl">
+                        🦁 RECEBER MINHA UNÇÃO AGORA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-4 border-t border-white/5">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="font-cinzel text-2xl font-bold text-center mb-12">Quebrando Objeções Espirituais</h2>
+            <div class="space-y-3">
+                <template x-for="(faq, i) in [
+                    {q: 'Isso é para qualquer cristão?', a: 'Sim. Se você sente que nasceu para mais do que o sistema religioso tradicional oferece, este chamado é para você.'},
+                    {q: 'É baseado em que?', a: 'Exclusivamente nos Evangelhos. Analisamos o padrão de operação de Jesus contra as trevas e o sistema de sua época.'},
+                    {q: 'E se eu não me sentir pronto?', a: 'O preparo não precede o chamado, ele acontece durante o caminhar. Os discípulos foram capacitados enquanto obedeciam.'},
+                    {q: 'É algo herético ou místico?', a: 'Pelo contrário. É o retorno à pureza do poder bíblico que foi enterrado por séculos de tradições humanas vazias.'}
+                ]">
+                    <div class="bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5">
+                        <button @click="openFaq = (openFaq === i ? null : i)" 
+                                class="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-white/5">
+                            <span class="font-cinzel text-sm font-bold text-zinc-200" x-text="faq.q"></span>
+                            <span class="text-yellow-500 font-bold" x-text="openFaq === i ? '−' : '+'"></span>
+                        </button>
+                        <div x-show="openFaq === i" x-collapse class="p-5 pt-0 text-xs text-zinc-500 leading-relaxed" x-text="faq.a"></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-4 text-center relative border-t border-white/5">
+        <div class="max-w-2xl mx-auto" data-aos="fade-up">
+            <p class="text-xs tracking-widest uppercase text-yellow-500/50 mb-8">Convocação Profética</p>
+            <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-10 leading-tight">
+                O chamado foi feito. <br>
+                <span class="text-yellow-500 text-glow-gold">A porta está aberta.</span>
+            </h2>
+            
+            <div class="space-y-6 mb-12">
+                <p class="text-zinc-500 text-sm italic italic leading-relaxed">"Alguns vão ignorar esse chamado... e continuar vivendo abaixo da autoridade que receberam."</p>
+                <p class="text-white text-lg font-cinzel">Outros vão atravessar o portal... <br><span class="text-yellow-500">e nunca mais serão os mesmos.</span></p>
+            </div>
+
+            <a href="https://pay.kiwify.com.br/ChpHpNj" 
+               class="inline-block bg-yellow-600 hover:bg-yellow-500 text-black font-bold font-cinzel tracking-widest px-12 py-6 rounded-md transition-all shadow-[0_0_50px_rgba(234,179,8,0.3)]">
+                🦁 ENTRAR NA UNÇÃO DO LEÃO AGORA
+            </a>
+            
+            <p class="mt-8 text-[10px] uppercase tracking-[0.4em] text-zinc-700 font-cinzel italic">O julgamento terminou. Agora é com você.</p>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-zinc-600 text-[10px] uppercase tracking-widest">Unção do Leão — Treinamento em Autoridade Espiritual &copy; 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Simulação simples de partículas douradas
+        for(let i=0; i<30; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            let size = Math.random() * 3 + 1;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+</html>

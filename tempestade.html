@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Tempestade - Entre Mundos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #eab308;
+            --bg-dark: #000000;
+            --card-bg: #18181b;
+            --shadow-red: #450a0a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .storm-bg {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent, rgba(0,0,0,1)),
+                        url('https://media.base44.com/images/public/69dd4eee1d527ab41482d6a9/3ca9af2e4_generated_6ac4f97e.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+            transition: transform 10s ease-out;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Tela Inicial */
+        #intro-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 10px; }
+        .gold-text { color: var(--primary); text-shadow: 0 0 15px rgba(234, 179, 8, 0.5); }
+
+        .btn-call {
+            margin-top: 30px;
+            padding: 18px 45px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
+        }
+
+        /* Interface de Chat */
+        #chat-screen { 
+            display: none; 
+            flex: 1; 
+            flex-direction: column; 
+            height: 100%;
+            padding: 0 15px;
+        }
+
+        .chat-header {
+            padding: 40px 0 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0 100px; /* Padding extra no fundo para não cobrir o botão */
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scrollbar-width: none;
+        }
+
+        #chat-messages::-webkit-scrollbar { display: none; }
+
+        .message {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            font-size: 1rem;
+            line-height: 1.5;
+            animation: slideIn 0.4s ease-out forwards;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .label { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
+
+        .mentor { background: #1c1c1f; border: 1px solid rgba(234, 179, 8, 0.15); align-self: flex-start; border-bottom-left-radius: 2px; }
+        .shadow { background: #3b0707; border: 1px solid rgba(255,0,0,0.1); color: #fecaca; font-style: italic; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .revelation { background: rgba(234, 179, 8, 0.1); border: 1px solid var(--primary); color: var(--primary); font-weight: bold; align-self: flex-start; }
+        .sfx { background: transparent; color: #71717a; font-style: italic; text-align: center; width: 100%; font-size: 0.85rem; padding: 10px; }
+
+        #final-action { 
+            display: none; 
+            position: absolute;
+            bottom: 30px;
+            left: 15px;
+            right: 15px;
+            text-align: center;
+            background: linear-gradient(transparent, black 20%);
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="storm-bg" id="bg"></div>
+
+    <div class="container">
+        <div id="intro-screen">
+            <h1 id="title-anim">A Tempestade<br><span class="gold-text">Entre Mundos</span></h1>
+            <button class="btn-call" onclick="startExperience()">📞 Atender Ligação</button>
+        </div>
+
+        <div id="chat-screen">
+            <div class="chat-header">
+                <span style="color: #ef4444; font-size: 0.7rem; font-weight: bold; letter-spacing: 1px;">● LIGAÇÃO EM ANDAMENTO</span>
+                <span style="font-family: 'Cinzel'; color: var(--primary); font-size: 0.8rem;">Guardião</span>
+            </div>
+            <div id="chat-messages"></div>
+            <div id="final-action">
+                <button class="btn-call" style="width: 100%; background: var(--primary); color: black; font-weight: bold;" onclick="alert('Indo para o Tribunal...'); window.location.href='tribunal.html';">⚔️ Seguir para o Tribunal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT = [
+            { delay: 0, type: 'sfx', text: '💨 [Vento forte... trovões distantes...]' },
+            { delay: 2000, type: 'mentor', text: 'Sss… ei… escuta.' },
+            { delay: 4500, type: 'mentor', text: 'Se você tá ouvindo isso… significa que a tempestade abriu um portal pra você.' },
+            { delay: 8000, type: 'mentor', text: 'Não entra em pânico… ainda.' },
+            { delay: 10500, type: 'sfx', text: '⚡ [Trovão forte]' },
+            { delay: 12500, type: 'mentor', text: 'A gente tá no mesmo barco que os discípulos… sabe aquele momento? Aquele em que o caos parece mais vivo que as pessoas?' },
+            { delay: 18000, type: 'mentor', text: 'Pois é. E essa tempestade… não é só vento. É a batalha dentro de você.' },
+            { delay: 25000, type: 'shadow', text: 'Você não tem força para isso…' },
+            { delay: 28000, type: 'mentor', text: 'Escuta… tem algo te observando.' },
+            { delay: 31000, type: 'sfx', text: '🔊 [Algo arranhando madeira...]' },
+            { delay: 33000, type: 'mentor', text: 'Não é demônio comum. É a Sombra Religiosa. A mesma que tentou calar Jesus naquela noite.' },
+            { delay: 38000, type: 'mentor', text: 'Ela te quer fraco. Te quer silencioso. Te quer… domesticado.' },
+            { delay: 43000, type: 'shadow', text: 'Desiste. Volta pra zona de conforto...' },
+            { delay: 46000, type: 'mentor', text: 'Mas eu ouvi um rugido… e por isso te liguei.' },
+            { delay: 50000, type: 'sfx', text: '⚡⚡ [Trovão devastador]' },
+            { delay: 52000, type: 'mentor', text: 'Não é o rugido da tempestade. É o rugido dentro de você. Algo começou a acordar.' },
+            { delay: 57000, type: 'mentor', text: 'E quando a Sombra percebe que um escolhido acorda… ela tenta afogar ele antes que descubra quem é.' },
+            { delay: 63000, type: 'sfx', text: '🌊 [Água batendo forte]' },
+            { delay: 65000, type: 'mentor', text: 'Mas Jesus… Ele não negocia com caos. Ele governa.' },
+            { delay: 70000, type: 'mentor', text: 'E você vai aprender isso. Não como doutrina. Como autoridade transferida.' },
+            { delay: 76000, type: 'mentor', text: 'Eu tô aqui pra te guiar pela tempestade. Mas você precisa ouvir cada palavra minha… sem medo.' },
+            { delay: 82000, type: 'revelation', text: 'Porque a primeira chave da Unção do Leão é simples: O caos te teme.' },
+            { delay: 88000, type: 'mentor', text: 'Repete isso aí dentro de você… mesmo que sua alma esteja tremendo.' },
+            { delay: 93000, type: 'sfx', text: '📡 [Interferência... outra presença na linha...]' },
+            { delay: 96000, type: 'shadow', text: 'NÃO... ESCUTA...' },
+            { delay: 98000, type: 'mentor', text: 'A Sombra… tá tentando cortar a conexão.' },
+            { delay: 101000, type: 'mentor', text: 'Quando essa ligação cair… você vai receber a próxima instrução. O próximo portal.' },
+            { delay: 106000, type: 'mentor', text: 'Se prepare. Porque a tempestade… é só o começo.' },
+            { delay: 110000, type: 'sfx', text: '📴 [Ligação cortada]' }
+        ];
+
+        function startExperience() {
+            document.getElementById('intro-screen').style.display = 'none';
+            document.getElementById('chat-screen').style.display = 'flex';
+            document.getElementById('bg').style.transform = 'scale(1)';
+            
+            console.log("Iniciando sequência de mensagens...");
+
+            SCRIPT.forEach((msg, index) => {
+                setTimeout(() => {
+                    console.log(`Exibindo mensagem ${index}: ${msg.type}`);
+                    addMessage(msg.text, msg.type);
+                    
+                    // Se for a última mensagem do script
+                    if (index === SCRIPT.length - 1) {
+                        setTimeout(() => {
+                            document.getElementById('final-action').style.display = 'block';
+                        }, 2000);
+                    }
+                }, msg.delay);
+            });
+        }
+
+        function addMessage(text, type) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+            
+            let label = "";
+            if(type === 'mentor' || type === 'revelation') label = '<span class="label" style="color: var(--primary)">Guardião</span>';
+            if(type === 'shadow') label = '<span class="label" style="color: #ef4444">A Sombra</span>';
+
+            div.innerHTML = `${label}${text}`;
+            container.appendChild(div);
+            
+            // Força o scroll para o fim
+            container.scrollTo({
+                top: container.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
